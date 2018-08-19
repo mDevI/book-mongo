@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Document
 public class Comment {
@@ -18,10 +19,10 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String commenter, String text, Date date) {
+    public Comment(String commenter, String text) {
         this.commenter = commenter;
         this.text = text;
-        this.date = date;
+        this.date = Date.valueOf(LocalDate.now());
     }
 
     public String getCommenter() {

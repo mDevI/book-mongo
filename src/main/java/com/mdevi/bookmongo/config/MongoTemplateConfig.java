@@ -37,7 +37,7 @@ public class MongoTemplateConfig {
 
         DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoDbFactory);
 
-        // Remove _class from fields
+        // Remove the _class from fields whose are mapped to a collection entry.
         MappingMongoConverter converter = new MappingMongoConverter(dbRefResolver, new MongoMappingContext());
         converter.setTypeMapper(new DefaultMongoTypeMapper(null));
 

@@ -10,6 +10,7 @@ import java.util.List;
 @Document(collection = "books")
 public class Book {
 
+    private String id;
     @Field(value = "isbn")
     private String isbn;
     @Field(value = "title")

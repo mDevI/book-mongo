@@ -3,6 +3,7 @@ package com.mdevi.bookmongo.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Book {
     @Field("pages")
     private Integer pages;
     @Field("comments")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     public Book() {
     }
@@ -91,6 +92,10 @@ public class Book {
 
     public void setAuthors(Author[] authors) {
         Authors = authors;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
     }
 
     @Override

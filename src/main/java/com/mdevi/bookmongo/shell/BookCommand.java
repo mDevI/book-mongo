@@ -154,8 +154,7 @@ public class BookCommand {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         System.out.println("Comments for selected book: " + bookTitle);
         for (Comment comment : comments) {
-            System.out.println(simpleDateFormat.format(comment.getDate()) + "\t" + comment.getCommenter() +
-                    " wrote: \t" + comment.getText());
+            System.out.println(simpleDateFormat.format(comment.getDate()) + "\t" + comment.getCommenter() + " wrote: \t" + comment.getText());
         }
     }
 

@@ -1,0 +1,120 @@
+[
+  {
+    "_id": {
+      "$oid": "5b795bce62b4ac279cce353d"
+    },
+    "isbn": "978-0641723445",
+    "title": "The Lightning Thief.",
+    "genre": "fantasy",
+    "authors": [
+      {
+        "fullName": "Rick Riordan"
+      }
+    ],
+    "year": {
+      "$numberInt": "2006"
+    },
+    "pages": {
+      "$numberInt": "416"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5b795e1562b4ac279cce353e"
+    },
+    "isbn": "978-1423103349",
+    "title": "The Sea of Monsters",
+    "genre": "fantasy",
+    "authors": [
+      {
+        "fullName": "Rick Riordan"
+      }
+    ],
+    "year": {
+      "$numberInt": "2007"
+    },
+    "pages": {
+      "$numberInt": "320"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5b795ee262b4ac279cce353f"
+    },
+    "isbn": "978-1857995879",
+    "title": "Sophie's World : The Greek Philosophers",
+    "genre": "fantasy",
+    "authors": [
+      {
+        "fullName": "Jostein Gaarder"
+      }
+    ],
+    "year": {
+      "$numberInt": "1995"
+    },
+    "pages": {
+      "$numberInt": "64"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5b795f4462b4ac279cce3540"
+    },
+    "isbn": "978-1933988177",
+    "title": "Lucene in Action, Second Edition",
+    "genre": "IT",
+    "authors": [
+      {
+        "fullName": "Michael McCandless"
+      }
+    ],
+    "year": {
+      "$numberInt": "2010"
+    },
+    "pages": {
+      "$numberInt": "475"
+    },
+    "comments": [
+      {
+        "observer": "Ralf Zinger",
+        "text": "Awesome Book !",
+        "create_on": {
+          "$date": {
+            "$numberLong": "1534698000000"
+          }
+        }
+      },
+      {
+        "observer": "Don Marvel",
+        "text": "Great reading for holidays",
+        "create_on": {
+          "$date": {
+            "$numberLong": "1534734329394"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "5b7978c262b4ac3a088803ff"
+    },
+    "isbn": "999-1933988100",
+    "title": "The funniest story about the Mongo DB.",
+    "genre": "IT",
+    "authors": [
+      {
+        "fullName": "Sergei Belonosov"
+      },
+      {
+        "fullName": "Liz Wilson"
+      }
+    ],
+    "year": {
+      "$numberInt": "2018"
+    },
+    "pages": {
+      "$numberInt": "112"
+    }
+  }
+]

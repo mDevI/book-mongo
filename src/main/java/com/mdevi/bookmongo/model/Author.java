@@ -1,12 +1,23 @@
 package com.mdevi.bookmongo.model;
 
-import java.sql.Date;
-
 public class Author {
 
-    private String firstName;
-    private String lastName;
-    private Date dateBirth;
+    private String fullName;
+
+    public Author() {
+    }
+
+    public Author(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
 
 }

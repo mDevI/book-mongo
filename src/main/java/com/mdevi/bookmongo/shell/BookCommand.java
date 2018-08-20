@@ -2,15 +2,15 @@ package com.mdevi.bookmongo.shell;
 
 import com.mdevi.bookmongo.model.Author;
 import com.mdevi.bookmongo.model.Book;
+import com.mdevi.bookmongo.model.Comment;
 import com.mdevi.bookmongo.service.BookService;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @ShellComponent
 public class BookCommand {
@@ -114,28 +114,48 @@ public class BookCommand {
     //DONE: The method to find books by author name.
     @ShellMethod(value = "Find books by author name.", key = "findByAuthorName", group = "Book operations")
     public void findBooksByAuthorName(@ShellOption(value = "--name") String authorNamePattern) {
-        List<Book> booksByAuthorName = bookService.findByAuthor(authorNamePattern);
+        final List<Book> booksByAuthorName = bookService.findByAuthor(authorNamePattern);
         if (booksByAuthorName.size() > 0) {
             printBooksInfo(booksByAuthorName);
         }
     }
 
-    //TODO: The method to add comment to book.
+    //DONE: The method to add comment to book.
     @ShellMethod(value = "Add a short comment to the book.", key = "commentTheBook", group = "Book operations")
     public void addCommentToBook(
             @ShellOption String isbn,
-            @ShellOption String personName,
+            @ShellOption String person,
             @ShellOption String text
     ) {
-
+        bookService.addCommentToBook(isbn, person, text);
+        System.out.println("Comment is added");
     }
 
-    //TODO: The method show a book comments.
+    //DONE: The method show a book comments.
     @ShellMethod(value = "Show all comments of the book.", key = "showComments", group = "Book operations")
     public void showBookComments(
             @ShellOption String isbn
     ) {
+        Map<String, List<Comment>> commentsBook = bookService.findAllCommentsByIsbn(isbn);
+        if (commentsBook != null) {
+            String keyBookTitle = commentsBook.keySet().stream().findFirst().get();
+            Optional<List<Comment>> comments = Optional.ofNullable(commentsBook.get(keyBookTitle));
+            // check if comments exist.
+            if (!"".equals(keyBookTitle) && comments.isPresent() && !comments.get().isEmpty()) {
+                printBookComments(keyBookTitle, commentsBook.get(keyBookTitle));
+            } else {
+                System.out.println("Not commented yet.");
+            }
+        } else System.out.println("No book found with ISBN " + isbn);
+    }
 
+    private void printBookComments(String bookTitle, List<Comment> comments) {
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        System.out.println("Comments for selected book: " + bookTitle);
+        for (Comment comment : comments) {
+            System.out.println(simpleDateFormat.format(comment.getDate()) + "\t" + comment.getCommenter() + " wrote: \t" + comment.getText());
+        }
     }
 
     //DONE: The method to delete book by ISBN.

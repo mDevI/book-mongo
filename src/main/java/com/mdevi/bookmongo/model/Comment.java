@@ -3,8 +3,8 @@ package com.mdevi.bookmongo.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.Date;
+
 
 @Document
 public class Comment {
@@ -22,7 +22,7 @@ public class Comment {
     public Comment(String commenter, String text) {
         this.commenter = commenter;
         this.text = text;
-        this.date = Date.valueOf(LocalDate.now());
+        this.date = new Date();
     }
 
     public String getCommenter() {
